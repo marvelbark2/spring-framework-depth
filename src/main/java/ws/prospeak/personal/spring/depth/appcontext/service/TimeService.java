@@ -2,6 +2,7 @@ package ws.prospeak.personal.spring.depth.appcontext.service;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import ws.prospeak.personal.spring.depth.appcontext.aspect.logging.Logging;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -12,6 +13,7 @@ public class TimeService {
     @Value("#{new Boolean(environment['envTarget'] != 'dev')}")
     private boolean is24;
 
+    @Logging()
     public String getTime() {
         LocalDateTime now = LocalDateTime.now();
         if(is24)

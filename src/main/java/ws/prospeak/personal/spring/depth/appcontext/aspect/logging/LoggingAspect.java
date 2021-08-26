@@ -1,4 +1,4 @@
-package ws.prospeak.personal.spring.depth.appcontext.aspect;
+package ws.prospeak.personal.spring.depth.appcontext.aspect.logging;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
@@ -18,7 +18,7 @@ public class LoggingAspect {
     public void executeLogging(Logging name) {}
 
     //Before advice
-    @Before("executeLogging(logging)")
+    @Before(value = "executeLogging(logging)", argNames = "joinPoint,logging")
     public void logMethodCalled(JoinPoint joinPoint, Logging logging) {
         LOGGER.info("After advice: " + "JoinPoint is completed: " + joinPoint.getSignature().toString() + "  ");
     }
